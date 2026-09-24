@@ -1,0 +1,38 @@
+{
+  "welcome": "Good Morning 👋",
+  "login_title": "Create Your Profile",
+  "login_subtitle": "Add your name and profile picture",
+  "full_name": "Full Name",
+  "full_name_hint": "Abdelrahman Nagh",
+  "continue": "Continue",
+
+  "good_morning": "Good Morning 👋",
+  "tasks": "Tasks",
+  "done": "Done",
+  "pending": "Pending",
+  "today_tasks": "Today's Tasks",
+
+  "flutter_ui": "Flutter UI",
+  "build_register_screen": "Build Register Screen",
+
+  "workout": "Workout",
+  "gym_at": "Gym at 6 PM",
+
+  "meeting": "Meeting",
+  "team_sync": "Team Sync",
+  "in_progress": "In Progress",
+
+  "read_book": "Read Book",
+  "atomic_habits": "Atomic Habits",
+
+  "task": "Task",
+
+  "add_task": "Add Task",
+  "task_title": "Task Title",
+  "design_login_screen": "Design Login Screen",
+  "description": "Description",
+  "task_description": "Task Description...",
+  "status": "Status",
+  "choose_color": "Choose Color",
+  "save_task": "Save Task"
+}

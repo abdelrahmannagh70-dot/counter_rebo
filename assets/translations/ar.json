@@ -1,0 +1,38 @@
+{
+  "welcome": "صباح الخير 👋",
+  "login_title": "أنشئ ملفك الشخصي",
+  "login_subtitle": "أضف اسمك وصورة ملفك الشخصي",
+  "full_name": "الاسم بالكامل",
+  "full_name_hint": "عبدالرجمن ناجح",
+  "continue": "متابعة",
+
+  "good_morning": "صباح الخير 👋",
+  "tasks": "المهام",
+  "done": "تم",
+  "pending": "معلق",
+  "today_tasks": "مهام اليوم",
+
+  "flutter_ui": "واجهة Flutter",
+  "build_register_screen": "إنشاء شاشة التسجيل",
+
+  "workout": "تمرين",
+  "gym_at": "الجيم الساعة 6 مساءً",
+
+  "meeting": "اجتماع",
+  "team_sync": "مزامنة الفريق",
+  "in_progress": "قيد التنفيذ",
+
+  "read_book": "قراءة كتاب",
+  "atomic_habits": "العادات الذرية",
+
+  "task": "مهمة",
+
+  "add_task": "إضافة مهمة",
+  "task_title": "عنوان المهمة",
+  "design_login_screen": "تصميم شاشة تسجيل الدخول",
+  "description": "الوصف",
+  "task_description": "وصف المهمة...",
+  "status": "الحالة",
+  "choose_color": "اختر اللون",
+  "save_task": "حفظ المهمة"
+}
