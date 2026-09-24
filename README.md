@@ -84,6 +84,7 @@ assets/screenshots/create_profile.png
 ```
 
 <img src="assets/screenshots/create_profile.png" width="300">
+<img src="assets/screenshots/create_profile.arabic.png" width="300">
 
 ---
 
@@ -112,6 +113,7 @@ assets/screenshots/home_screen.png
 ```
 
 <img src="assets/screenshots/home_screen.png" width="300">
+<img src="assets/screenshots/home_screen.arabic.png" width="300">
 
 ---
 
@@ -139,6 +141,7 @@ assets/screenshots/add_task.png
 ```
 
 <img src="assets/screenshots/add_task.png" width="300">
+<img src="assets/screenshots/add_task.ar.png" width="300">
 
 ---
 
@@ -250,84 +253,7 @@ my_app/
         ├── create_profile.png
         ├── home_screen.png
         └── add_task.png
-```
 
----
-
-# 🚀 How To Run
-
-## 1. Clone the Repository
-
-```bash
-git clone YOUR_REPOSITORY_URL
-```
-
-## 2. Open the Project
-
-Open the project using:
-
-- Android Studio
-- Visual Studio Code
-
-## 3. Install Dependencies
-
-Run:
-
-```bash
-flutter pub get
-```
-
-## 4. Run the Application
-
-Run:
-
-```bash
-flutter run
-```
-
----
-
-# 🖼️ Screenshots Folder
-
-All application screenshots used in this README are stored inside:
-
-```text
-assets/screenshots/
-```
-
-The screenshots are:
-
-```text
-assets/screenshots/create_profile.png
-assets/screenshots/home_screen.png
-assets/screenshots/add_task.png
-```
-
----
-
-# 📌 Important
-
-The `README.md` file must be located in the root directory of the project.
-
-Correct:
-
-```text
-my_app/
-├── README.md
-├── pubspec.yaml
-├── lib/
-└── assets/
-```
-
-Incorrect:
-
-```text
-my_app/
-└── lib/
-    └── README.md
-```
-
----
 
 # 👨‍💻 Developer
 
