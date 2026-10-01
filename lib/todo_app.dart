@@ -9,6 +9,9 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+
+
+    
       designSize: const Size(420, 812),
       minTextAdapt: true,
       splitScreenMode: true,

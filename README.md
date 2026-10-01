@@ -61,6 +61,12 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3
   easy_localization: ^3.0.8
+  image_picker: ^1.1.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  hive_generator: ^2.0.1
+  build_runner: ^2.5.4
+
 ```
 
 ---
@@ -83,8 +89,10 @@ create_profile.png
 assets/screenshots/create_profile.png
 ```
 
-<img src="assets/screenshots/create_profile.png" width="300">
-<img src="assets/screenshots/create_profile.arabic.png" width="300">
+
+<img src="assets/screenshots/camare_ui.png" width="300">
+<img src="assets/screenshots/gallrey_ui.png" width="300">
+<img src="assets/screenshots/final_ui.png.png" width="300">
 
 ---
 

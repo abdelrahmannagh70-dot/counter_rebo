@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:my_app/todo_app.dart';
 
 void main() async {
@@ -7,6 +8,7 @@ void main() async {
 
   await EasyLocalization.ensureInitialized();
 
+  await Hive.initFlutter();
   runApp(
     EasyLocalization(
       supportedLocales: const [

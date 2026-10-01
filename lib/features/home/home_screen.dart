@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(height: 3.h),
 
                         Text(
-                          "Abdelrahman",
+                          "User",
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
