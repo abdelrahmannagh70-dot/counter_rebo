@@ -92,9 +92,8 @@ assets/screenshots/create_profile.png
 
 <img src="assets/screenshots/camare_ui.png" width="300">
 <img src="assets/screenshots/gallrey_ui.png" width="300">
-<img src="assets/screenshots/final_ui.png.png" width="300">
+<img src="assets/screenshots/final_ui.png" width="300">
 
----
 
 ## 2. Home Screen
 
@@ -150,6 +149,8 @@ assets/screenshots/add_task.png
 
 <img src="assets/screenshots/add_task.png" width="300">
 <img src="assets/screenshots/add_task.ar.png" width="300">
+<img src="assets/screenshots/add_task2.png" width="300">
+<img src="assets/screenshots/add_task3.png" width="300">
 
 ---
 

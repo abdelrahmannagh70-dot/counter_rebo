@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_app/features/add_task/custom_text_field.dart';
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({super.key});
@@ -129,6 +130,40 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
               ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    hintText: 'date',
+                onTap:(){
+                  showDatePicker(
+                    context: context,
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime(2027),
+                  );
+                }
+                    /*onTap: (){
+                      showDatePicker(
+                        context: context,
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime(2027),
+                      );*/
+
+                  ),
+                ),
+
+                10.horizontalSpace,
+
+                Expanded(
+                  child: CustomTextField(
+                    hintText: 'time',
+                    onTap:(){
+                      showTimePicker(context: context, initialTime: TimeOfDay.now());
+                    },
+                  ),
+                ),
+              ],
             ),
 
             SizedBox(height: 8.h),

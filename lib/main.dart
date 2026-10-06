@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import 'package:my_app/features/login/data/user_model.dart';
 import 'package:my_app/todo_app.dart';
+import 'package:my_app/utils/app_constans.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,6 +12,13 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   await Hive.initFlutter();
+
+  Hive.registerAdapter(UserModelAdapter());
+
+  await Hive.openBox<UserModel>(
+    AppConstans.userBox,
+  );
+
   runApp(
     EasyLocalization(
       supportedLocales: const [
