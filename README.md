@@ -151,6 +151,10 @@ assets/screenshots/add_task.png
 <img src="assets/screenshots/add_task.ar.png" width="300">
 <img src="assets/screenshots/add_task2.png" width="300">
 <img src="assets/screenshots/add_task3.png" width="300">
+<img src="assets/screenshots/final_app1.png" width="300">
+<img src="assets/screenshots/final_app2.png" width="300">
+<img src="assets/screenshots/name_app.png" width="300">
+<img src="assets/screenshots/shape_app.png" width="300">
 
 ---
 
