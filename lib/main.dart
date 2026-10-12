@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_app/core/model/task_model.dart';
-
 import 'package:my_app/features/login/data/user_model.dart';
 import 'package:my_app/todo_app.dart';
 import 'package:my_app/utils/app_constans.dart';
@@ -38,3 +37,4 @@ void main() async {
     ),
   );
 }
+

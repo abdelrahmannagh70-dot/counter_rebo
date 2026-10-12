@@ -1,273 +1,261 @@
-# Task Management App
+# Counter App using Flutter Bloc and Cubit
 
-A simple and modern Task Management mobile application built using Flutter and Dart.
+## 📌 Project Overview
 
-The application helps users organize their daily tasks, view task statistics, and add new tasks through a clean and responsive user interface.
+The Counter App is a simple Flutter application that demonstrates state management using the `flutter_bloc` package and the Cubit pattern.
 
----
+The application allows users to increment and decrement a counter by pressing the plus (+) and minus (-) buttons.
 
-## 📱 About The App
+It also displays a message indicating whether the counter was incremented or decremented.
 
-The Task Management App allows users to create their profile and manage their daily tasks.
+## 🎯 Project Objectives
 
-The application includes a simple dashboard where users can:
-
-- View their profile
-- View task statistics
-- View today's tasks
-- Check task status
-- Add new tasks
-- Choose task status
-- Choose task color
-- Switch between English and Arabic
-
----
-
-## ✨ Features
-
-- 👤 Create Profile
-- 🏠 Home Dashboard
-- 📋 Today's Tasks
-- ➕ Add New Task
-- 📝 Task Title
-- 📄 Task Description
-- 🔄 Task Status
-- 🎨 Task Color Selection
-- 📊 Task Statistics
-- 🌐 English & Arabic Languages
-- 📱 Responsive UI
-- 🎨 Clean and Modern Design
-
----
+* Understand state management in Flutter.
+* Learn how to use Cubit.
+* Understand the role of States.
+* Learn how to provide a Cubit using BlocProvider.
+* Use BlocBuilder to update the UI when the state changes.
+* Separate application logic from the user interface.
 
 ## 🛠️ Technologies Used
 
-- Flutter
-- Dart
-- Flutter ScreenUtil
-- Easy Localization
+* Flutter
+* Dart
+* flutter_bloc
+* flutter_screenutil
 
----
-
-## 📦 Packages
-
-The main packages used in this project are:
-
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-
-  cupertino_icons: ^1.0.8
-  flutter_screenutil: ^5.9.3
-  easy_localization: ^3.0.8
-  image_picker: ^1.1.2
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-  hive_generator: ^2.0.1
-  build_runner: ^2.5.4
-
-```
-
----
-
-# 📱 App Screens
-
-## 1. Create Profile Screen
-
-The Create Profile screen allows the user to enter their full name before entering the application.
-
-### Screen Name
+## 📂 Project Structure
 
 ```text
-create_profile.png
+lib/
+├── counter/
+│   └── cubit/
+│       ├── counter_cubit.dart
+│       └── counter_state.dart
+│
+├── counter_screen.dart
+└── main.dart
 ```
 
-### Image Path
+## 1. Counter Screen
 
-```text
-assets/screenshots/create_profile.png
-```
+**File:** `counter_screen.dart`
 
-<img src="assets/screenshots/name_app1.png" width="300">
-<img src="assets/screenshots/camare_ui.png" width="300">
-<img src="assets/screenshots/gallrey_ui.png" width="300">
-<img src="assets/screenshots/final_ui.png" width="300">
+The Counter Screen is responsible for displaying the application's user interface.
 
+It contains:
 
-## 2. Home Screen
+* An AppBar displaying the title "Counter App".
+* An increment button (+).
+* A decrement button (-).
+* A text widget displaying the current counter value.
+* A message displaying the current operation.
 
-The Home screen displays the user's name, task statistics, and today's tasks.
+### Main Responsibilities
 
-The dashboard includes:
+* Display the counter value.
+* Handle button presses.
+* Call the appropriate Cubit methods.
+* Listen to state changes using BlocBuilder.
+* Rebuild the UI when a new state is emitted.
 
-- Total Tasks
-- Completed Tasks
-- Pending Tasks
-- Today's Tasks
-- Task Status
+### Important Widget: BlocBuilder
 
-### Screen Name
+`BlocBuilder<CounterCubit, CounterState>` listens to state changes and rebuilds the relevant part of the UI whenever the Cubit emits a new state.
 
-```text
-home_screen.png
-```
+This allows the application to display the latest operation without manually refreshing the screen.
 
-### Image Path
+## 2. Counter Cubit
 
-```text
-assets/screenshots/home_screen.png
-```
+**File:** `counter_cubit.dart`
 
-<img src="assets/screenshots/home_screen.png" width="300">
-<img src="assets/screenshots/home_screen.arabic.png" width="300">
+CounterCubit contains the business logic of the counter application.
 
----
+It extends `Cubit<CounterState>`, which means it manages and emits objects of type `CounterState`.
 
-## 3. Add Task Screen
+### Main Responsibilities
 
-The Add Task screen allows users to create a new task.
+* Store the counter value.
+* Increment the counter.
+* Decrement the counter.
+* Emit a new state after each operation.
 
-Users can enter:
+### Increment Operation
 
-- Task Title
-- Description
-- Task Status
-- Task Color
+When the user presses the plus (+) button, the `incrementCounter()` method increases the counter value by one and emits an `Increment` state.
 
-### Screen Name
+### Decrement Operation
 
-```text
-add_task.png
-```
+When the user presses the minus (-) button, the `decrementCounter()` method decreases the counter value by one and emits a `Decrement` state.
 
-### Image Path
+### What Is emit()?
 
-```text
-assets/screenshots/add_task.png
-```
+The `emit()` method sends a new state from the Cubit.
 
-<img src="assets/screenshots/add_task.png" width="300">
-<img src="assets/screenshots/add_task.ar.png" width="300">
-<img src="assets/screenshots/add_task2.png" width="300">
-<img src="assets/screenshots/add_task3.png" width="300">
-<img src="assets/screenshots/final_app1.png" width="300">
-<img src="assets/screenshots/final_app2.png" width="300">
+When a new state is emitted, widgets listening to that Cubit can respond to the change and rebuild when appropriate.
 
-<img src="assets/screenshots/shape_app.png" width="300">
+## 3. Counter State
 
----
+**File:** `counter_state.dart`
 
-# 📐 Responsive Design
+CounterState represents the different states of the counter application.
 
-The application uses Flutter ScreenUtil to create a responsive user interface.
+It defines the possible states that the CounterCubit can emit.
 
-The application is designed to adapt to different mobile screen sizes.
+### CounterInitial
 
-The project uses:
+Represents the initial state when the application starts.
+
+### Increment
+
+Represents the state emitted when the user increments the counter.
+
+### Decrement
+
+Represents the state emitted when the user decrements the counter.
+
+### Why Do We Need States?
+
+States help the UI identify what happened in the application.
+
+For example:
+
+* `Increment` indicates that the increment operation occurred.
+* `Decrement` indicates that the decrement operation occurred.
+
+The UI can check the current state using type checks such as:
 
 ```dart
-ScreenUtilInit(
-  designSize: const Size(420, 812),
-  minTextAdapt: true,
-  splitScreenMode: true,
+if (state is Increment) {
+  // Display the increment message.
+}
+
+if (state is Decrement) {
+  // Display the decrement message.
+}
+```
+
+## 4. BlocProvider
+
+**Widget:** `BlocProvider<CounterCubit>`
+
+BlocProvider makes a Cubit available to widgets in a specific part of the widget tree.
+
+It is commonly used to create and provide a Cubit to the screen that needs it.
+
+### Example
+
+```dart
+BlocProvider(
+  create: (context) => CounterCubit(),
+  child: const CounterScreen(),
 )
 ```
 
-Responsive units are used throughout the application:
+### How Does It Work?
+
+1. BlocProvider creates an instance of CounterCubit.
+2. CounterScreen can access the Cubit through the widget tree.
+3. The buttons call Cubit methods using `context.read<CounterCubit>()`.
+4. BlocBuilder listens to the Cubit's state changes.
+5. The UI rebuilds when a new state is emitted.
+
+### Why Is BlocProvider Important?
+
+Without providing the Cubit to the appropriate widget tree, the screen cannot access that Cubit instance through `context.read<CounterCubit>()`.
+
+BlocProvider helps manage the Cubit's lifecycle and makes it accessible to the widgets that depend on it.
+
+## 5. BlocBuilder
+
+BlocBuilder is used to rebuild a widget in response to state changes.
+
+### Example
 
 ```dart
-20.w
-20.h
-18.sp
-12.r
+BlocBuilder<CounterCubit, CounterState>(
+  builder: (context, state) {
+    if (state is Increment) {
+      return const Text('Increment');
+    }
+
+    if (state is Decrement) {
+      return const Text('Decrement');
+    }
+
+    return const Text('Counter App');
+  },
+)
+```
+<img src="assets/screenshots/counter_App1.png" width="300">
+<img src="assets/screenshots/counter_increment.png" width="300">
+<img src="assets/screenshots/counter_decrement.png" width="300">
+
+### BlocBuilder vs. context.read()
+
+**BlocBuilder:**
+
+* Listens for state changes.
+* Rebuilds the UI when a new state is emitted.
+
+**context.read():**
+
+* Accesses the Cubit instance.
+* Is useful for calling methods such as `incrementCounter()` and `decrementCounter()`.
+* Does not subscribe the widget to state changes.
+
+## 6. How the Application Works
+
+The application follows these steps:
+
+1. The application starts.
+2. BlocProvider creates the CounterCubit.
+3. CounterCubit starts with the `CounterInitial` state.
+4. The user presses the plus or minus button.
+5. The corresponding Cubit method executes.
+6. The counter value changes.
+7. Cubit emits an `Increment` or `Decrement` state.
+8. BlocBuilder receives the state change.
+9. The UI rebuilds to display the operation message and updated counter value.
+
+## 7. Installation and Running
+
+Make sure Flutter is installed on your computer.
+
+### Step 1: Get Dependencies
+
+Run the following command in the project directory:
+
+```bash
+flutter pub get
 ```
 
-### Responsive Units
+### Step 2: Run the Application
 
-| Unit | Description |
-|---|---|
-| `.w` | Responsive width |
-| `.h` | Responsive height |
-| `.sp` | Responsive text size |
-| `.r` | Responsive radius |
+```bash
+flutter run
+```
 
-This helps the application maintain a consistent layout across different screen sizes.
+## 8. Expected Results
+
+* Pressing (+) increases the counter by one.
+* Pressing (-) decreases the counter by one.
+* The screen displays an increment message after an increment operation.
+* The screen displays a decrement message after a decrement operation.
+* The UI responds to state changes automatically.
+
+## 9. Conclusion
+
+This project demonstrates the fundamentals of state management in Flutter using Cubit.
+
+It explains how CounterCubit manages application logic, CounterState represents application states, BlocProvider provides the Cubit to the widget tree, and BlocBuilder rebuilds the UI in response to state changes.
+
+These concepts provide a foundation for building more structured and maintainable Flutter applications.
 
 ---
 
-# 🌍 Localization
+**Project:** Counter App
 
-The application supports two languages:
+**Framework:** Flutter
 
-- 🇬🇧 English
-- 🇪🇬 Arabic
-
-Localization is implemented using:
-
-```text
-easy_localization
-```
-
-Translation files are stored in:
-
-```text
-assets/translations/
-```
-
-### English Translation
-
-```text
-assets/translations/en.json
-```
-
-### Arabic Translation
-
-```text
-assets/translations/ar.json
-```
-
-The user can switch between English and Arabic from the application.
-
----
-
-# 📂 Project Structure
-
-```text
-my_app/
-│
-├── README.md
-├── pubspec.yaml
-│
-├── lib/
-│   │
-│   ├── main.dart
-│   ├── todo_app.dart
-│   │
-│   └── features/
-│       │
-│       ├── login/
-│       │   └── login_screen.dart
-│       │
-│       ├── home/
-│       │   └── widgets/
-│       │       └── home_screen.dart
-│       │
-│       └── add_task/
-│           └── add_task.dart
-│
-└── assets/
-    │
-    ├── translations/
-    │   ├── ar.json
-    │   └── en.json
-    │
-    └── screenshots/
-        ├── create_profile.png
-        ├── home_screen.png
-        └── add_task.png
-
-
-# 👨‍💻 Developer
-
-Developed using Flutter and Dart.
+**State Management:** Flutter Bloc / Cubit

@@ -17,7 +17,7 @@ State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-// Tasks list
+
 final List<Map<String, dynamic>> tasks = [
 {
 "title": "flutter_ui",
@@ -45,7 +45,7 @@ final List<Map<String, dynamic>> tasks = [
 },
 ];
 
-// Open Add Task screen
+
 Future<void> openAddTask() async {
 final Map<String, dynamic>? newTask =
 await Navigator.push<Map<String, dynamic>>(
@@ -65,7 +65,6 @@ tasks.add(newTask);
 
 @override
 Widget build(BuildContext context) {
-// Statistics
 final int totalTasks = tasks.length;
 
 final int doneTasks = tasks.where((task) {
@@ -89,9 +88,6 @@ vertical: 20.h,
 child: Column(
 crossAxisAlignment: CrossAxisAlignment.start,
 children: [
-// =========================
-// Header
-// =========================
 
 Row(
 children: [
@@ -150,10 +146,6 @@ color: Colors.grey.shade700,
 ),
 
 SizedBox(height: 25.h),
-
-// =========================
-// Statistics
-// =========================
 
 Container(
 width: double.infinity,

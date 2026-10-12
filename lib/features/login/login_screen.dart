@@ -27,6 +27,7 @@ XFile? photo;
 final TextEditingController nameController =
 TextEditingController();
 
+
 Future<void> pickImageFromCamera() async {
 final XFile? pickedPhoto = await picker.pickImage(
 source: ImageSource.camera,
@@ -38,6 +39,7 @@ photo = pickedPhoto;
 });
 }
 }
+
 
 Future<void> pickImageFromGallery() async {
 final XFile? pickedPhoto = await picker.pickImage(
@@ -51,19 +53,23 @@ photo = pickedPhoto;
 }
 }
 
+
 Future<void> saveUserData(UserModel user) async {
 try {
-await Hive.box<UserModel>(
+final box = Hive.box<UserModel>(
 AppConstans.userBox,
-).add(user);
+);
 
-debugPrint("User saved successfully");
+await box.add(user);
+
+debugPrint(
+"User saved successfully: ${user.name}",
+);
 } catch (error) {
 debugPrint("Hive Error: $error");
 }
 
 if (!mounted) return;
-
 Navigator.pushReplacement(
 context,
 MaterialPageRoute(
@@ -74,9 +80,38 @@ name: user.name,
 );
 }
 
+
+Future<void> continueLogin() async {
+final String enteredName =
+nameController.text.trim();
+
+
+if (enteredName.isEmpty) {
+ScaffoldMessenger.of(context).showSnackBar(
+SnackBar(
+content: Text(
+"full_name_required".tr(),
+),
+),
+);
+
+return;
+}
+
+// Create user using the exact name entered
+final UserModel user = UserModel(
+name: enteredName,
+image: photo?.path ?? "",
+);
+
+// Save user and open Home
+await saveUserData(user);
+}
+
 @override
 void dispose() {
 nameController.dispose();
+
 super.dispose();
 }
 
@@ -91,31 +126,43 @@ padding: EdgeInsets.symmetric(
 horizontal: 24.w,
 vertical: 20.h,
 ),
+
 child: ConstrainedBox(
 constraints: BoxConstraints(
 minHeight:
-MediaQuery.of(context).size.height - 40.h,
+MediaQuery.of(context).size.height -
+40.h,
 ),
+
 child: Column(
-mainAxisAlignment: MainAxisAlignment.center,
+mainAxisAlignment:
+MainAxisAlignment.center,
+
 children: [
 
-// Profile Image
 InkWell(
 onTap: () {
 showModalBottomSheet(
 context: context,
+
 builder: (context) {
 return Padding(
-padding: const EdgeInsets.all(16),
-child: Column(
-mainAxisSize: MainAxisSize.min,
-children: [
+padding:
+const EdgeInsets.all(16),
 
+child: Column(
+mainAxisSize:
+MainAxisSize.min,
+
+children: [
 MainButton(
 title: 'camera'.tr(),
+
 onTap: () {
-Navigator.pop(context);
+Navigator.pop(
+context,
+);
+
 pickImageFromCamera();
 },
 ),
@@ -124,8 +171,12 @@ pickImageFromCamera();
 
 MainButton(
 title: 'gallery'.tr(),
+
 onTap: () {
-Navigator.pop(context);
+Navigator.pop(
+context,
+);
+
 pickImageFromGallery();
 },
 ),
@@ -138,10 +189,12 @@ pickImageFromGallery();
 
 child: CircleAvatar(
 radius: 60.r,
+
 backgroundColor:
 Colors.grey.shade200,
 
-backgroundImage: photo != null
+backgroundImage:
+photo != null
 ? FileImage(
 File(photo!.path),
 )
@@ -150,9 +203,13 @@ File(photo!.path),
 child: photo == null
 ? Icon(
 Icons.person,
+
 size: 60.r,
+
 color:
-const Color(0xff4054B2),
+const Color(
+0xff4054B2,
+),
 )
     : null,
 ),
@@ -160,10 +217,11 @@ const Color(0xff4054B2),
 
 SizedBox(height: 28.h),
 
-// Title
 Text(
 "login_title".tr(),
+
 textAlign: TextAlign.center,
+
 style: TextStyle(
 fontSize: 24.sp,
 fontWeight: FontWeight.bold,
@@ -174,10 +232,12 @@ const Color(0xff202124),
 
 SizedBox(height: 8.h),
 
-// Subtitle
+
 Text(
 "login_subtitle".tr(),
+
 textAlign: TextAlign.center,
+
 style: TextStyle(
 fontSize: 13.sp,
 color: Colors.grey,
@@ -186,11 +246,15 @@ color: Colors.grey,
 
 SizedBox(height: 35.h),
 
-// Full Name
+
+
 Align(
-alignment: Alignment.centerLeft,
+alignment:
+Alignment.centerLeft,
+
 child: Text(
 "full_name".tr(),
+
 style: TextStyle(
 fontSize: 13.sp,
 fontWeight:
@@ -203,14 +267,23 @@ const Color(0xff202124),
 
 SizedBox(height: 8.h),
 
-// Text Field
+
 TextField(
 controller: nameController,
+
+textInputAction:
+TextInputAction.done,
+
+onSubmitted: (_) {
+continueLogin();
+},
+
 style: TextStyle(
 fontSize: 14.sp,
 color:
 const Color(0xff404040),
 ),
+
 decoration:
 InputDecoration(
 hintText:
@@ -223,6 +296,7 @@ Colors.grey.shade500,
 ),
 
 filled: true,
+
 fillColor: Colors.white,
 
 contentPadding:
@@ -237,6 +311,7 @@ borderRadius:
 BorderRadius.circular(
 12.r,
 ),
+
 borderSide:
 BorderSide.none,
 ),
@@ -247,6 +322,7 @@ borderRadius:
 BorderRadius.circular(
 12.r,
 ),
+
 borderSide:
 BorderSide.none,
 ),
@@ -257,6 +333,7 @@ borderRadius:
 BorderRadius.circular(
 12.r,
 ),
+
 borderSide:
 const BorderSide(
 color:
@@ -269,35 +346,26 @@ width: 1.5,
 
 SizedBox(height: 20.h),
 
+// =========================
 // Continue Button
+// =========================
+
 SizedBox(
 width: double.infinity,
 height: 50.h,
 
 child: ElevatedButton(
-onPressed: () async {
-String name =
-nameController.text.trim();
-
-if (name.isEmpty) {
-name = "name";
-}
-
-final UserModel user =
-UserModel(
-name: name,
-image:
-photo?.path ?? "",
-);
-
-await saveUserData(user);
-},
+onPressed: continueLogin,
 
 style:
 ElevatedButton.styleFrom(
 backgroundColor:
-const Color(0xff5665A5),
+const Color(
+0xff5665A5,
+),
+
 elevation: 0,
+
 shape:
 RoundedRectangleBorder(
 borderRadius:
@@ -309,6 +377,7 @@ BorderRadius.circular(
 
 child: Text(
 "continue".tr(),
+
 style: TextStyle(
 fontSize: 13.sp,
 color: Colors.white,
@@ -321,11 +390,14 @@ FontWeight.w600,
 
 SizedBox(height: 18.h),
 
+// =========================
 // Language Button
+// =========================
+
 IconButton(
 onPressed: () {
-if (context
-    .locale.languageCode ==
+if (context.locale
+    .languageCode ==
 'ar') {
 context.setLocale(
 const Locale('en'),
